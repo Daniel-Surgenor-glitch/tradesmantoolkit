@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Tradesman Toolkit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f5f3ff',   /* indigo-50 */
+                100: '#ede9fe',  /* indigo-100 */
+                200: '#ddd6fe',  /* indigo-200 */
+                300: '#c4b5fd',  /* indigo-300 */
+                400: '#818cf8',  /* indigo-400 */
+                500: '#4f46e5',  /* indigo-600 */
+                600: '#4338ca',  /* indigo-700 */
+                700: '#3730a3',  /* indigo-800 */
+                800: '#1e1b4b',  /* indigo-900 */
+                900: '#1e1b4b',
+              },
+              amber: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#818cf8',
+                500: '#4f46e5',
+                600: '#4338ca',
+                700: '#3730a3',
+                800: '#1e1b4b',
+                900: '#1e1b4b',
+                950: '#0f0e26',
+              },
+              emerald: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#818cf8',
+                500: '#4f46e5',
+                600: '#4338ca',
+                700: '#3730a3',
+                800: '#1e1b4b',
+                900: '#1e1b4b',
+                950: '#0f0e26',
+              },
+              slate: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
+
+    <!-- Top Info Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 flex justify-between items-center no-print">
+      <div class="flex items-center space-x-2">
+        <a href="/index.html" class="hover:text-amber-400 flex items-center space-x-1 font-semibold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" x2="5" y1="12" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>Back to Dashboard</span>
+        </a>
+      </div>
+      <div class="flex items-center space-x-4 font-mono">
+        <span>No Cookie Tracking Active</span>
+        <button onclick="toggleDarkMode()" class="hover:text-amber-500 theme-toggle">
+          <svg class="theme-icon w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm sticky top-0 z-45 no-print">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="/index.html" class="flex items-center space-x-1">
+              <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Tradesman<span class="text-amber-500">Toolkit</span></span>
+            </a>
+          </div>
+
+          <nav class="hidden md:flex space-x-1 items-center">
+            <a href="/index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500">Home</a>
+            <a href="/invoice.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500">Invoice Generator</a>
+            <a href="/quote.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 font-sans">Quote Generator</a>
+            <a href="/calculator.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 font-sans">Material Calculator</a>
+            <a href="/about.html" class="px-3 py-2 rounded-md text-sm font-semibold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40">About</a>
+            <a href="/contact.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500">Contact</a>
+          </nav>
+
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-nav-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 space-y-1">
+        <a href="/index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Home</a>
+        <a href="/invoice.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Invoice Generator</a>
+        <a href="/quote.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Quote Generator</a>
+        <a href="/calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100 font-semibold">Material Calculator</a>
+        <a href="/about.html" class="block px-3 py-2 rounded-md text-base font-semibold text-amber-600 bg-amber-50 dark:bg-amber-950/40">About</a>
+        <a href="/contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Contact</a>
+      </div>
+    </header>
+
+    <!-- Ad Placement 1: Top Banner Ad -->
+    <div class="max-w-3xl mx-auto w-full px-4 mt-6 no-print text-center">
+      <!-- GOOGLE ADSENSE CODE INTEGRATION POINT -->
+      <div class="adsense-placement w-full h-18 flex flex-col justify-center items-center rounded-lg py-1 px-4 shadow-inner">
+        <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold mb-0.5">Google AdSense Banner (Header Layout)</span>
+        <span class="text-[9px] text-slate-400 dark:text-slate-650">Auto-responsive top banner - ideal sizing (728x90)</span>
+      </div>
+    </div>
+
+    <!-- Main Content Panel -->
+    <main class="flex-grow max-w-3xl mx-auto w-full px-4 py-8 space-y-8">
+      
+      <section class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+        <h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white flex items-center space-x-2.5">
+          <span class="inline-block w-1.5 h-8 bg-amber-500 rounded-full"></span>
+          <span>About Tradesman Toolkit</span>
+        </h1>
+        
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
+          Welcome to the <b>Tradesman Toolkit</b>, a high-quality suite of free web resources designed to streamline daily business processes for the worldwide tradesmen community. We cover estimates, billing invoices, quotes, and structural material calculations for plasterers, painters, decorators, carpenters, builders, plumbers, and small masonry contractors.
+        </p>
+
+        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200">Our Core Principles</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs leading-relaxed text-slate-500">
+          <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-2">
+            <strong class="text-slate-900 dark:text-slate-100 block font-bold">100% Privacy Sandbox</strong>
+            <span>All details entered inside invoices, client logs, or plaster equations are stored solely within your browser's locally sandboxed storage. We have no external database databases, meaning zero trade statistics are ever tracked or recorded by us.</span>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-900 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 space-y-2">
+            <strong class="text-slate-900 dark:text-slate-100 block font-bold">Absolutely Free & Ad-Supported</strong>
+            <span>Our goal is to remain a permanent free tool. To fund infrastructure maintenance and ongoing calculators formulas updates, we allocate clear banner slots for Google AdSense networks. Ads maintain this system forever.</span>
+          </div>
+        </div>
+
+        <h3 class="text-base font-bold text-slate-800 dark:text-slate-200 pt-2">Full Compatibility with Static Hosting</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm">
+          Because this entire application contains absolutely 0 backend processing (no PHP, Node.js servers, SQL server clusters, or background daemons), it is <b>100% compatible with GitHub Pages</b> static hosting rules, and can even be run entirely offline directly on your local laptop on-site.
+        </p>
+
+        <div class="border-t border-slate-100 dark:border-slate-700 pt-6 flex justify-between items-center text-xs text-slate-400">
+          <span>Tradesman Toolkit Suite v3.2</span>
+          <span>Built: June 2026</span>
+        </div>
+      </section>
+
+      <!-- Ad Placement 2: Bottom Banner Ad -->
+      <div class="w-full text-center no-print">
+        <!-- GOOGLE ADSENSE CODE INTEGRATION POINT -->
+        <div class="adsense-placement w-full h-24 flex flex-col justify-center items-center rounded-lg shadow-inner py-1 px-4">
+          <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold mb-0.5 animate-pulse">Google AdSense Banner (Footer Layout)</span>
+          <span class="text-[9px] text-slate-400 dark:text-slate-650">Auto-responsive footer ad banner</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Main Footer links -->
+    <footer class="bg-slate-900 text-slate-400 py-6 px-4 border-t border-slate-800 text-center text-xs space-y-2 no-print">
+      <p>© 2026 Tradesman Toolkit. Dynamic business suite for site plasterers and contractors.</p>
+      <div class="flex justify-center space-x-3 text-[10px] font-medium text-slate-500">
+        <a href="/index.html" class="hover:text-amber-500 transition-colors">Dashboard Home</a>
+        <span>•</span>
+        <a href="/invoice.html" class="hover:text-amber-500 transition-colors font-sans">Invoice Generator</a>
+        <span>•</span>
+        <a href="/quote.html" class="hover:text-amber-500 transition-colors">Quote Generator</a>
+        <span>•</span>
+        <a href="/calculator.html" class="hover:text-amber-500 transition-colors">Plaster Estimates</a>
+      </div>
+    </footer>
+
+    <!-- Scripts Integration -->
+    <script src="/js/main.js"></script>
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-nav-menu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>

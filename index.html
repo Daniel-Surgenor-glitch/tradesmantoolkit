@@ -1,0 +1,885 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tradesman Toolkit | Free Invoice, Quote & Material Calculators</title>
+    <meta name="description" content="Manage your building, plastering, plumbing, electrical, and decorating business with our free online invoice generator, quote generator, and plasterers plaster board calculators." />
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Tradesman Toolkit | Free Invoice & Quote Generators" />
+    <meta property="og:description" content="Free online invoice generator, quote generator, and material calculators. Created specifically for builders, plasterers, and tradespeople." />
+    <meta property="og:url" content="https://tradesmantoolkit.co.uk" />
+    <meta property="og:site_name" content="Tradesman Toolkit" />
+
+    <!-- CDN Libraries: Tailwind CSS v3 and Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f5f3ff',   /* indigo-50 */
+                100: '#ede9fe',  /* indigo-100 */
+                200: '#ddd6fe',  /* indigo-200 */
+                300: '#c4b5fd',  /* indigo-300 */
+                400: '#818cf8',  /* indigo-400 */
+                500: '#4f46e5',  /* indigo-600 */
+                600: '#4338ca',  /* indigo-700 */
+                700: '#3730a3',  /* indigo-800 */
+                800: '#1e1b4b',  /* indigo-900 */
+                900: '#1e1b4b',
+              },
+              amber: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#818cf8',
+                500: '#4f46e5',
+                600: '#4338ca',
+                700: '#3730a3',
+                800: '#1e1b4b',
+                900: '#1e1b4b',
+                950: '#0f0e26',
+              },
+              emerald: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#818cf8',
+                500: '#4f46e5',
+                600: '#4338ca',
+                700: '#3730a3',
+                800: '#1e1b4b',
+                900: '#1e1b4b',
+                950: '#0f0e26',
+              },
+              slate: {
+                50: '#f8fafc',
+                100: '#f1f5f9',
+                200: '#e2e8f0',
+                300: '#cbd5e1',
+                400: '#94a3b8',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/css/style.css" />
+    
+    <!-- Schema.org WebSite JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Tradesman Toolkit",
+      "description": "A set of free business utility calculators, invoice builders, and plastering material estimators for tradesmen and small construction businesses.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires HTML5, LocalStorage, and ES6 Javascript.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "GBP"
+      }
+    }
+    </script>
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
+
+    <!-- Top Info Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 flex justify-between items-center no-print">
+      <div class="flex items-center space-x-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Local Client Engine Active</span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span>Offline-friendly / No Server Required</span>
+        <button onclick="toggleDarkMode()" class="hover:text-amber-500 flex items-center space-x-1 focus:outline-none theme-toggle" id="themeTogglerTop">
+          <svg class="theme-icon w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"></svg>
+          <span class="theme-text">Dark Mode</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm sticky top-0 z-40 no-print">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          
+          <!-- Logo / Title -->
+          <div class="flex items-center">
+            <a href="/index.html" class="flex items-center space-x-2.5">
+              <div class="bg-amber-500 text-slate-900 p-2 rounded-lg font-bold flex items-center justify-center shadow-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-hammer"><path d="m15 12-8.37 8.38a1 1 0 0 1-1.42 0L3.3 18.46a1 1 0 0 1 0-1.42L11.68 8.7"/><path d="m20.9 9.1-1.39-1.39a1 1 0 0 0-1.41 0l-3.23 3.23a1 1 0 0 0 0 1.41l1.39 1.39a1 1 0 0 0 1.41 0l3.23-3.22a1 1 0 0 0 0-1.42Z"/><path d="m14.5 12.5-3-3"/></svg>
+              </div>
+              <div>
+                <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Tradesman<span class="text-amber-500">Toolkit</span></span>
+                <span class="block text-[9px] text-slate-500 dark:text-slate-400 font-medium tracking-wide uppercase">Free Business Suite</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-1 items-center">
+            <a href="/index.html" class="px-3 py-2 rounded-md text-sm font-semibold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40">Home</a>
+            <a href="/invoice.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:bg-slate-55">Invoice Generator</a>
+            <a href="/quote.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:bg-slate-55">Quote Generator</a>
+            <a href="/calculator.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:bg-slate-55">Material Calculator</a>
+            <a href="/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:bg-slate-55">About</a>
+            <a href="/contact.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 hover:bg-slate-55">Contact</a>
+          </nav>
+
+          <!-- Navigation Utilities & Hamburger toggles -->
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleSettingsModal()" class="p-2 rounded-lg text-slate-600 hover:text-amber-500 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none" title="Company Brand Settings">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+            
+            <button onclick="toggleMobileDropdown()" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 focus:outline-none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-nav" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 space-y-1">
+        <a href="/index.html" class="block px-3 py-2 rounded-md text-base font-semibold text-amber-600 bg-amber-50 dark:bg-amber-950/40">Home</a>
+        <a href="/invoice.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Invoice Generator</a>
+        <a href="/quote.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Quote Generator</a>
+        <a href="/calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Material Calculator</a>
+        <a href="/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">About</a>
+        <a href="/contact.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Contact</a>
+        <button onclick="toggleDarkMode(); toggleMobileDropdown();" class="w-full text-left block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Theme Toggle</button>
+      </div>
+    </header>
+
+    <!-- Ad Placement 1: Large Banner below Header -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mt-4 no-print text-center">
+      <!-- GOOGLE ADSENSE CODE INTEGRATION POINT
+         To place a real Google AdSense auto-responsive top banner:
+         1. Paste the AdSense script tag inside your <head>.
+         2. Replace the div child below with your AdSense <ins> code snippet.
+      -->
+      <div class="adsense-placement w-full h-24 flex flex-col justify-center items-center rounded-lg py-2 px-4 shadow-inner" id="ad-banner-1">
+        <span class="text-xs font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold mb-1">Google AdSense Banner (Header Layout)</span>
+        <span class="text-[10px] text-slate-400 dark:text-slate-600 text-center">Recommended Size: 728x90 Leaderboard or Auto-responsive banner</span>
+      </div>
+    </div>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+      
+      <!-- Welcome Intro Section -->
+      <section class="mb-10 bg-gradient-to-tr from-slate-900 to-slate-800 text-white rounded-2xl p-6 sm:p-10 shadow-lg relative overflow-hidden animate-fade-in" id="welcome-card">
+        <!-- Visual Background shapes -->
+        <div class="absolute -right-24 -bottom-24 w-80 h-80 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute left-1/3 -top-12 w-64 h-64 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
+        
+        <div class="relative z-10 max-w-3xl">
+          <div class="inline-flex items-center space-x-2 bg-amber-500/20 text-amber-400 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 border border-amber-500/10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="animate-bounce"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Fast, Secure & Fully Static</span>
+          </div>
+          <h1 id="landing-main-title" class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+            Professional Free Business Toolkit for Modern <span class="text-amber-400">Tradesmen</span>
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg mb-6 leading-relaxed">
+            Create professional PDF invoices & quotations instantly, and run high-accuracy material estimators. Designed tailored for plasterers, builders, plumbers, decorators, and independent contractors.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#quick-launch" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-6 py-3 rounded-xl shadow transition-all hover:-translate-y-0.5 active:translate-y-0 text-sm flex items-center space-x-2">
+              <span>Launch a Tool Now</span> 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" x2="19" y1="12" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <button onclick="toggleSettingsModal()" class="bg-slate-700/60 hover:bg-slate-700 text-slate-100 border border-slate-600/50 hover:border-slate-500 font-semibold px-5  py-3 rounded-xl transition-all text-sm flex items-center space-x-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-building"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M8 14h.01"/><path d="M16 14h.01"/><path d="M12 14h.01"/></svg>
+              <span>Setup Company Branding</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Layout structure: Side-by-Side Main and Desktop Sidebar -->
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Center/Left column: Main Tools & Recent Activities -->
+        <div class="lg:col-span-3 space-y-8">
+          
+          <!-- Tool Cards Section -->
+          <section id="quick-launch" class="scroll-mt-20">
+            <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 flex items-center space-x-2.5">
+              <span class="inline-block w-1.5 h-6 bg-amber-500 rounded-full"></span>
+              <span>Our Suite of Tradesmen Tools</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+              <!-- Tool 1: Invoice Builder -->
+              <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm flex flex-col justify-between tool-card group" id="card-invoice">
+                <div>
+                  <div class="bg-amber-100 dark:bg-amber-950/55 text-amber-600 dark:text-amber-400 w-12 h-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                  </div>
+                  <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-amber-500 transition-colors">Invoice Generator</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    Compile elegant VAT-inclusive itemized invoices. Customize logos and currencies, track lab/mats, calculate subtotals, export PDF or print.
+                  </p>
+                </div>
+                <a href="/invoice.html" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl font-bold bg-slate-100 hover:bg-amber-500 text-slate-800 hover:text-slate-900 dark:bg-slate-700 dark:hover:bg-amber-500 dark:text-slate-200 dark:hover:text-slate-900 transition-colors text-sm space-x-1">
+                  <span>Open Invoice Builder</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+              </div>
+
+              <!-- Tool 2: Quotation Builder -->
+              <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm flex flex-col justify-between tool-card group" id="card-quote">
+                <div>
+                  <div class="bg-indigo-100 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 w-12 h-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-signature"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m15 11-1.5 5.5a.5.5 0 0 1-1 0L11 14l-1.5-.5a.5.5 0 0 1 0-1L14 11s1.5.5 1 1.5Z"/></svg>
+                  </div>
+                  <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-500 transition-colors">Quote Generator</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    Produce professional job quotations. Add labor/materials rates, custom terms and conditions, automatic quote expiration date, and export.
+                  </p>
+                </div>
+                <a href="/quote.html" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl font-bold bg-slate-100 hover:bg-amber-500 text-slate-800 hover:text-slate-900 dark:bg-slate-700 dark:hover:bg-amber-500 dark:text-slate-200 dark:hover:text-slate-900 transition-colors text-sm space-x-1">
+                  <span>Open Quote Builder</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+              </div>
+
+              <!-- Tool 3: Plastering Estimator -->
+              <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-sm flex flex-col justify-between tool-card group" id="card-calc">
+                <div>
+                  <div class="bg-emerald-100 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 w-12 h-12 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calculator"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><line x1="8" x2="16" y1="14" y2="14"/><line x1="16" x2="16" y1="18" y2="18"/><line x1="12" x2="12" y1="18" y2="18"/><line x1="8" x2="8" y1="18" y2="18"/><line x1="12" x2="12" y1="14" y2="14"/><line x1="16" x2="16" y1="10" y2="10"/><line x1="12" x2="12" y1="10" y2="10"/><line x1="8" x2="8" y1="10" y2="10"/></svg>
+                  </div>
+                  <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-emerald-500 transition-colors">Plastering Calculator</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                    Quick material estimator for plasterers. Input room dimensional specifications up and retrieve boards, bonding, skim bags, and corner beads.
+                  </p>
+                </div>
+                <a href="/calculator.html" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl font-bold bg-slate-100 hover:bg-amber-500 text-slate-800 hover:text-slate-900 dark:bg-slate-700 dark:hover:bg-amber-500 dark:text-slate-200 dark:hover:text-slate-900 transition-colors text-sm space-x-1">
+                  <span>Open Plaster Estimator</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>
+                </a>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Dynamic Advert Placement 3: In-content Ad between tools and recents -->
+          <div class="w-full text-center no-print">
+            <!-- GOOGLE ADSENSE CODE INTEGRATION POINT
+               In-content native responsive layout ad: suitable for display banners or links.
+            -->
+            <div class="adsense-placement w-full h-32 flex flex-col justify-center items-center rounded-lg shadow-inner py-2 px-4" id="ad-banner-in-content">
+              <span class="text-xs font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold mb-1">Google AdSense - In-Content Ad Placement</span>
+              <span class="text-[10px] text-slate-400 dark:text-slate-600">Recommended Size: Auto-responsive native ad layout, or 468x60 / 300x250 Banner</span>
+            </div>
+          </div>
+
+          <!-- Recent Document History Grid -->
+          <section id="workhistory" class="space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <h2 class="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white flex items-center space-x-2.5">
+                <span class="inline-block w-1.5 h-6 bg-slate-400 dark:bg-slate-600 rounded-full"></span>
+                <span>Your Draft History (Local Browser Storage)</span>
+              </h2>
+              <div class="flex items-center space-x-2">
+                <span class="text-xs text-slate-500 dark:text-slate-400 bg-slate-200/60 dark:bg-slate-800 px-2.5 py-1 rounded-full border border-slate-300/30 font-medium">Automatic save on edit</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <!-- Recent Invoices Panel -->
+              <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 shadow-sm space-y-4" id="recent-invoices-pane">
+                <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
+                  <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-500"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <h3 class="font-bold text-slate-900 dark:text-white">Recent Invoices</h3>
+                  </div>
+                  <span class="text-xs text-slate-400 dark:text-slate-500 font-mono tracking-wider px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700" id="invoice-count">0 Drafts</span>
+                </div>
+                <div class="divide-y divide-slate-100 dark:divide-slate-700/50 max-h-64 overflow-y-auto pr-1" id="recent-invoices-list">
+                  <!-- JS Generates this mapping dynamic -->
+                  <div class="py-6 text-center text-slate-400 dark:text-slate-500 text-sm">
+                    No draft invoices found. Click "Invoice Generator" above to build your first one!
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recent Quotes Panel -->
+              <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 shadow-sm space-y-4" id="recent-quotes-pane">
+                <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
+                  <div class="flex items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-indigo-500"><rect y="2" width="24" height="20" rx="2" ry="2"/><path d="M7 8h10"/><path d="M7 12h10"/><path d="M7 16h10"/></svg>
+                    <h3 class="font-bold text-slate-900 dark:text-white">Recent Quotes</h3>
+                  </div>
+                  <span class="text-xs text-slate-400 dark:text-slate-500 font-mono tracking-wider px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700" id="quote-count">0 Drafts</span>
+                </div>
+                <div class="divide-y divide-slate-100 dark:divide-slate-700/50 max-h-64 overflow-y-auto pr-1" id="recent-quotes-list">
+                  <!-- JS Generates this mapping dynamic -->
+                  <div class="py-6 text-center text-slate-400 dark:text-slate-500 text-sm">
+                    No draft quotes found. Click "Quote Generator" above to start pricing jobs!
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Right column: Sidebar (Ads on desktop, statistics and branding panel) -->
+        <div class="space-y-8 no-print">
+
+          <!-- Dynamic Branding QuickView Card -->
+          <section class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-5 shadow-sm space-y-4" id="brand-quickview">
+            <h3 class="font-bold text-slate-900 dark:text-white flex items-center space-x-2 border-b border-slate-100 dark:border-slate-700 pb-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-500"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M12 2v16"/><path d="m9 15 3 3 3-3"/></svg>
+              <span>Current Business Profile</span>
+            </h3>
+            
+            <div class="space-y-3.5">
+              <div class="flex items-center space-x-3 bg-slate-50 dark:bg-slate-900/40 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800">
+                <div class="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-200 dark:bg-slate-700 overflow-hidden" id="profile-logo-container">
+                  <span class="text-xs text-slate-400 font-bold uppercase" id="company-logo-preview-initials">JD</span>
+                </div>
+                <div>
+                  <span class="block text-xs text-slate-400 font-medium">Trading Name</span>
+                  <strong class="text-sm font-bold block" id="profile-company-name">JD Plastering Ltd</strong>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <div class="p-2 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/20 rounded-xl">
+                  <span class="block text-[10px] text-slate-400 uppercase">VAT Config</span>
+                  <span class="font-bold" id="profile-vat-number">Active GB</span>
+                </div>
+                <div class="p-2 border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/20 rounded-xl">
+                  <span class="block text-[10px] text-slate-400 uppercase">Currency</span>
+                  <span class="font-bold" id="profile-currency-symbol">Pound Sterling (£)</span>
+                </div>
+              </div>
+
+              <div class="text-xs text-slate-500 dark:text-slate-400 space-y-1 bg-slate-50 dark:bg-slate-950/20 p-2.5 rounded-xl">
+                <div class="flex justify-between">
+                  <span>Invoice Serial:</span>
+                  <span class="font-mono font-semibold text-slate-800 dark:text-slate-200" id="profile-invoice-no">#1001</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Quotation Serial:</span>
+                  <span class="font-mono font-semibold text-slate-800 dark:text-slate-200" id="profile-quote-no">#2001</span>
+                </div>
+              </div>
+
+              <button onclick="toggleSettingsModal()" class="w-full bg-slate-100 hover:bg-amber-500 dark:bg-slate-700 dark:hover:bg-amber-500 text-slate-800 dark:text-slate-100 hover:text-slate-900 font-semibold py-2 rounded-xl text-xs transition-colors flex items-center justify-center space-x-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-edit"><path d="M12 20h9"/><path d="M16.5 3.5a2.12a2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                <span>Edit Profile Details</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Ad Placement 2: Sidebar Ad on Desktop -->
+          <div class="w-full text-center no-print">
+            <!-- GOOGLE ADSENSE CODE INTEGRATION POINT
+               Heavy duty desktop skyscraper or tall box ad, ideal inside side columns.
+            -->
+            <div class="adsense-placement w-full min-h-[300px] flex flex-col justify-center items-center rounded-lg shadow-inner py-3 px-4" id="ad-banner-2">
+              <span class="text-xs font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold mb-1">Google AdSense - Sidebar Ad</span>
+              <span class="text-[10px] text-slate-400 dark:text-slate-600 block mb-4">Recommended Size: 300x250 Medium Rectangle, or 160x600 Wide Skyscraper</span>
+              <div class="w-full border-t border-slate-200 dark:border-slate-800/80 my-2 pt-2 text-[10px] text-slate-400 dark:text-slate-500">
+                Ads keep our tools free for tradesmen worldwide.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <!-- Ad Placement 4: Footer Banner Ad -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 mb-6 no-print text-center">
+      <!-- GOOGLE ADSENSE CODE INTEGRATION POINT
+         This bottom banner spans the page width just above the footer coordinates.
+      -->
+      <div class="adsense-placement w-full h-24 flex flex-col justify-center items-center rounded-lg shadow-inner py-2 px-4" id="ad-banner-footer">
+        <span class="text-xs font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold mb-1">Google AdSense Banner (Footer Layout)</span>
+        <span class="text-[10px] text-slate-400 dark:text-slate-600">Recommended Size: 728x90 Leaderboard or Auto-responsive footer banner</span>
+      </div>
+    </div>
+
+    <!-- Company Settings Modal -->
+    <div id="settings-modal" class="fixed inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden no-print animate-fade-in" role="dialog" aria-modal="true">
+      <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 w-full max-w-2xl rounded-2xl shadow-xl overflow-hidden max-h-[90vh] flex flex-col">
+        
+        <!-- Modal Head -->
+        <div class="bg-slate-900 text-white p-5 flex justify-between items-center border-b border-slate-800">
+          <div class="flex items-center space-x-2.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber-500"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            <div>
+              <h3 class="font-bold text-base">Company & Branding Settings</h3>
+              <p class="text-[10px] text-slate-400">Personalize documents with your trading credentials and company colors</p>
+            </div>
+          </div>
+          <button onclick="toggleSettingsModal()" class="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Modal Body (Scrollable form) -->
+        <div class="p-6 overflow-y-auto space-y-5 flex-grow" id="settings-form-body">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <!-- Company Logo drag/upload -->
+            <div class="col-span-1 md:col-span-2">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-2">Company Logo</label>
+              <div class="flex flex-col sm:flex-row items-center gap-4">
+                <div class="w-24 h-24 rounded-2xl flex items-center justify-center bg-slate-100 dark:bg-slate-900 border-2 border-dashed border-slate-300 dark:border-slate-700 overflow-hidden relative group" id="logo-modal-preview">
+                  <span class="text-[10px] text-slate-400 font-bold" id="logo-modal-placeholder-txt">No Logo</span>
+                </div>
+                <div class="flex-grow space-y-2 w-full">
+                  <div class="flex items-center justify-center w-full">
+                    <label class="flex flex-col items-center justify-center w-full h-18 border border-slate-300 dark:border-slate-700 rounded-xl cursor-pointer bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                      <div class="flex items-center space-x-2 py-3 px-4">
+                        <svg class="w-4 h-4 text-slate-400 group-hover:text-amber-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+                        <span class="text-xs text-slate-500 font-semibold" id="logo-select-feedback">Choose image / Drag PDF/PNG logo</span>
+                      </div>
+                      <input type="file" id="settings-logo-input" accept="image/*" class="hidden" onchange="previewLogoUpload(event)" />
+                    </label>
+                  </div>
+                  <button type="button" onclick="clearLogo()" class="text-[10px] font-bold text-red-500 hover:text-red-600 block">Remove Logo</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Company Name -->
+            <div class="col-span-1">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Company Trading Name</label>
+              <input type="text" id="settings-company-name" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="JD Builders" />
+            </div>
+
+            <!-- Email Address -->
+            <div class="col-span-1">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Business Email</label>
+              <input type="email" id="settings-company-email" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="sales@mycompany.co.uk" />
+            </div>
+
+            <!-- Phone -->
+            <div class="col-span-1">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Contact Telephone</label>
+              <input type="text" id="settings-company-phone" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="01234 567890" />
+            </div>
+
+            <!-- VAT Number -->
+            <div class="col-span-1">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">VAT Number (Optional)</label>
+              <input type="text" id="settings-company-vat" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="GB 123 4567 89" />
+            </div>
+
+            <!-- Company Address -->
+            <div class="col-span-1 md:col-span-2">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Company Address</label>
+              <textarea id="settings-company-address" rows="3" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Street name, City, Zipcode"></textarea>
+            </div>
+
+            <!-- Default VAT Percentage -->
+            <div class="col-span-1">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Default VAT Rate (%)</label>
+              <input type="number" id="settings-vat-rate" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="20" min="0" max="100" />
+            </div>
+
+            <!-- Default Discount Rate -->
+            <div class="col-span-1">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Default Discount (%)</label>
+              <input type="number" id="settings-discount-rate" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="0" min="0" max="100" />
+            </div>
+
+            <!-- Currency Symbol -->
+            <div class="col-span-1">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Local Currency Symbol</label>
+              <select id="settings-currency" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500">
+                <option value="£">Pound Sterling (£)</option>
+                <option value="$">US Dollar ($)</option>
+                <option value="€">Euro (€)</option>
+                <option value="A$">Australian Dollar (A$)</option>
+                <option value="NZ$">NZ Dollar (NZ$)</option>
+                <option value="CA$">Canadian Dollar (CA$)</option>
+                <option value="Rs">Indian Rupee (Rs)</option>
+              </select>
+            </div>
+
+            <!-- Next Document Numbers -->
+            <div class="col-span-1 grid grid-cols-2 gap-2">
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Next Invoice #</label>
+                <input type="text" id="settings-next-invoice" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="1001" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Next Quote #</label>
+                <input type="text" id="settings-next-quote" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="2001" />
+              </div>
+            </div>
+
+            <!-- Terms & Conditions Default -->
+            <div class="col-span-1 md:col-span-2">
+              <label class="block text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-1.5">Default Work Terms & Notes</label>
+              <textarea id="settings-terms" rows="2" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Enter standard terms (displayed bottom of quotes)"></textarea>
+            </div>
+          </div>
+
+          <!-- Import / Export Section in Settings -->
+          <div class="border-t border-slate-100 dark:border-slate-700 pt-4">
+            <h4 class="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 mb-2">Backup Plan Data</h4>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <button type="button" onclick="triggerSettingsExport()" class="flex-grow bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 font-semibold py-2.5 px-4 rounded-xl text-xs hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors flex items-center justify-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-amber-500"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                <span>Export Configuration (JSON)</span>
+              </button>
+              
+              <label class="flex-grow flex items-center justify-center bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 font-semibold py-2.5 px-4 rounded-xl text-xs hover:bg-slate-200 dark:hover:bg-slate-800 cursor-pointer transition-colors space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-500"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                <span>Import Configuration (JSON)</span>
+                <input type="file" id="settings-file-import" accept=".json" class="hidden" onchange="triggerSettingsImport(event)" />
+              </label>
+            </div>
+            <p class="text-[9px] text-slate-500 mt-1">Export, clear browser cache, or transfer setting details onto an external device natively.</p>
+          </div>
+
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="bg-slate-50 dark:bg-slate-900 border-t border-slate-100 dark:border-slate-700 p-4 flex justify-between items-center">
+          <button onclick="resetAllDefaults()" type="button" class="text-red-500 hover:text-red-600 font-bold text-xs flex items-center space-x-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+            <span>Reset ALL to Factory Default</span>
+          </button>
+          
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleSettingsModal()" type="button" class="text-slate-500 dark:text-slate-400 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-xs font-semibold py-2.5 px-4 rounded-xl transition-colors">Cancel</button>
+            <button onclick="saveAndApplyBrandSettings()" type="button" class="bg-amber-500 hover:bg-amber-600 text-slate-900 text-xs font-bold py-2.5 px-5 rounded-xl transition-all shadow hover:-translate-y-0.5">Save Changes</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-300 mt-12 py-12 px-4 no-print">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 border-b border-slate-800 pb-8">
+        
+        <!-- About the Toolkit widget -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-2">
+            <div class="bg-amber-500 text-slate-900 p-1.5 rounded-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 12-8.37 8.38a1 1 0 0 1-1.42 0L3.3 18.46a1 1 0 0 1 0-1.42L11.68 8.7"/><path d="m20.9 9.1-1.39-1.39a1 1 0 0 0-1.41 0l-3.23 3.23a1 1 0 0 0 0 1.41l1.39 1.39a1 1 0 0 0 1.41 0l3.23-3.22a1 1 0 0 0 0-1.42Z"/></svg>
+            </div>
+            <strong class="text-white text-lg tracking-tight">Tradesman<span class="text-amber-500">Toolkit</span></strong>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            The free-to-use professional business workstation for sole traders, plasterers, builders, electricians, and independent contractors to scale operations securely.
+          </p>
+          <p class="text-[10px] text-slate-500">
+            Powered by local browser sandboxing technology (HTML5). Drafts and secrets reside 100% locally on your computer. We never store your customer info or tax rates on servers.
+          </p>
+        </div>
+
+        <!-- Navigation Sitemap Links -->
+        <div>
+          <h4 class="text-white text-sm font-bold uppercase tracking-widest mb-4">Quick Links</h4>
+          <ul class="text-xs space-y-2.5">
+            <li><a href="/index.html" class="hover:text-amber-400 transition-colors">Home Dashboard</a></li>
+            <li><a href="/invoice.html" class="hover:text-amber-400 transition-colors">Invoice Builder Widget</a></li>
+            <li><a href="/quote.html" class="hover:text-amber-400 transition-colors">Job Quotation Builder</a></li>
+            <li><a href="/calculator.html" class="hover:text-amber-400 transition-colors">Plasterers Board & Bonding Estimator</a></li>
+          </ul>
+        </div>
+
+        <!-- Corporate Meta Pages -->
+        <div>
+          <h4 class="text-white text-sm font-bold uppercase tracking-widest mb-4">Info Pages</h4>
+          <ul class="text-xs space-y-2.5">
+            <li><a href="/about.html" class="hover:text-amber-400 transition-colors">About our free Toolkit</a></li>
+            <li><a href="/contact.html" class="hover:text-amber-400 transition-colors">Contact Support / Suggestions</a></li>
+            <li><button onclick="toggleSettingsModal()" class="hover:text-amber-400 text-left transition-colors">Open Brand Settings</button></li>
+          </ul>
+        </div>
+
+        <!-- Dynamic support module -->
+        <div class="space-y-3.5 text-xs text-slate-400">
+          <h4 class="text-white text-sm font-bold uppercase tracking-widest mb-2">Local Engine Safety</h4>
+          <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800 space-y-1.5 font-mono text-[10px]">
+            <div class="flex justify-between">
+              <span>GDPR Status:</span>
+              <span class="text-emerald-500 font-bold uppercase">100% Compliant</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Database:</span>
+              <span class="text-teal-400 font-semibold text-[9px]">localStorage Encrypted</span>
+            </div>
+            <div class="flex justify-between">
+              <span>SSL Encryption:</span>
+              <span class="text-blue-400 font-semibold font-mono">TLS 1.3 Static</span>
+            </div>
+          </div>
+          <button onclick="exportSettings()" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 font-semibold py-2 px-4 rounded-xl transition-all flex items-center justify-center space-x-1.5 text-xs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+            <span>Download All Data Backup</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom details -->
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <p>© 2026 Tradesman Toolkit. All rights reserved. Free tool designed for plasterers, constructors, and builders.</p>
+        <p class="mt-2 sm:mt-0 font-medium text-slate-400">Zero Server Processing — Secure Offline Mode Available</p>
+      </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="/js/main.js"></script>
+    <script>
+      // Desktop and Mobile Dropdown Toggles
+      function toggleMobileDropdown() {
+        const menu = document.getElementById("mobile-nav");
+        menu.classList.toggle("hidden");
+      }
+
+      function toggleSettingsModal() {
+        const modal = document.getElementById("settings-modal");
+        modal.classList.toggle("hidden");
+        if (!modal.classList.contains("hidden")) {
+          loadFormBrandSettings();
+        }
+      }
+
+      // Settings Loading & Prepopulation
+      function loadFormBrandSettings() {
+        loadSettings();
+        document.getElementById("settings-company-name").value = appSettings.companyName || "";
+        document.getElementById("settings-company-email").value = appSettings.companyEmail || "";
+        document.getElementById("settings-company-phone").value = appSettings.companyPhone || "";
+        document.getElementById("settings-company-vat").value = appSettings.vatNumber || "";
+        document.getElementById("settings-company-address").value = appSettings.companyAddress || "";
+        document.getElementById("settings-vat-rate").value = appSettings.defaultVatRate || "20";
+        document.getElementById("settings-discount-rate").value = appSettings.defaultDiscount || "0";
+        document.getElementById("settings-currency").value = appSettings.currency || "£";
+        document.getElementById("settings-next-invoice").value = appSettings.nextInvoiceNumber || "1001";
+        document.getElementById("settings-next-quote").value = appSettings.nextQuoteNumber || "2001";
+        document.getElementById("settings-terms").value = appSettings.termsAndConditions || "";
+        
+        updateLogoPreview();
+      }
+
+      // Logo selection & Base64 storage
+      function previewLogoUpload(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+        
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          appSettings.companyLogo = e.target.result;
+          updateLogoPreview();
+          document.getElementById("logo-select-feedback").textContent = "File selected successfully!";
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function clearLogo() {
+        appSettings.companyLogo = "";
+        updateLogoPreview();
+        document.getElementById("logo-select-feedback").textContent = "Choose image / Drag PDF/PNG logo";
+      }
+
+      function updateLogoPreview() {
+        const previewDiv = document.getElementById("logo-modal-preview");
+        if (appSettings.companyLogo) {
+          previewDiv.innerHTML = `<img src="${appSettings.companyLogo}" class="w-full h-full object-contain" alt="Branding logo preview" referrerPolicy="no-referrer" />`;
+        } else {
+          previewDiv.innerHTML = `<span class="text-[10px] text-slate-400 font-bold" id="logo-modal-placeholder-txt">No Logo</span>`;
+        }
+      }
+
+      // Save Brand setting click handler
+      function saveAndApplyBrandSettings() {
+        appSettings.companyName = document.getElementById("settings-company-name").value;
+        appSettings.companyEmail = document.getElementById("settings-company-email").value;
+        appSettings.companyPhone = document.getElementById("settings-company-phone").value;
+        appSettings.vatNumber = document.getElementById("settings-company-vat").value;
+        appSettings.companyAddress = document.getElementById("settings-company-address").value;
+        appSettings.defaultVatRate = document.getElementById("settings-vat-rate").value;
+        appSettings.defaultDiscount = document.getElementById("settings-discount-rate").value;
+        appSettings.currency = document.getElementById("settings-currency").value;
+        appSettings.nextInvoiceNumber = document.getElementById("settings-next-invoice").value;
+        appSettings.nextQuoteNumber = document.getElementById("settings-next-quote").value;
+        appSettings.termsAndConditions = document.getElementById("settings-terms").value;
+        
+        saveSettingsToStorage();
+        toggleSettingsModal();
+        applySettingsToHomepage();
+      }
+
+      function applySettingsToHomepage() {
+        loadSettings();
+        
+        // Update quickview stats
+        document.getElementById("profile-company-name").textContent = appSettings.companyName || "No Trading Name Set";
+        document.getElementById("profile-vat-number").textContent = appSettings.vatNumber ? `Vat Act: ${appSettings.vatNumber}` : "No VAT Registered";
+        
+        const currencyMap = { "£": "Pound (£)", "$": "Dollar ($)", "€": "Euro (€)", "A$": "AUS Dollar (A$)" };
+        document.getElementById("profile-currency-symbol").textContent = currencyMap[appSettings.currency] || `${appSettings.currency} Symbol`;
+        
+        document.getElementById("profile-invoice-no").textContent = `#${appSettings.nextInvoiceNumber}`;
+        document.getElementById("profile-quote-no").textContent = `#${appSettings.nextQuoteNumber}`;
+
+        const initials = (appSettings.companyName || "JD").split(" ").map(w => w[0]).join("").substring(0,2).toUpperCase();
+        const logoCont = document.getElementById("profile-logo-container");
+        if (appSettings.companyLogo) {
+          logoCont.innerHTML = `<img src="${appSettings.companyLogo}" class="w-full h-full object-contain" alt="Current Logo" referrerPolicy="no-referrer" />`;
+        } else {
+          logoCont.innerHTML = `<span class="text-xs text-slate-400 font-bold" id="company-logo-preview-initials">${initials}</span>`;
+        }
+
+        renderRecentHistoryPanels();
+      }
+
+      // Export/Import routing helpers
+      function triggerSettingsExport() {
+        exportSettings();
+      }
+
+      function triggerSettingsImport(event) {
+        importSettings(event, (success, incomingData) => {
+          if (success) {
+            applySettingsToHomepage();
+            alert("Settings profile imported successfully!");
+          } else {
+            alert("Unrecognized JSON formatting! Please verify file syntax.");
+          }
+        });
+      }
+
+      // Purge all system states from local
+      function resetAllDefaults() {
+        if (confirm("Are you sure you want to reset ALL Settings, Draft Invoices, and Draft Quotes? This action cannot be undone!")) {
+          localStorage.clear();
+          loadSettings();
+          applySettingsToHomepage();
+          toggleSettingsModal();
+          alert("All data wiped. Home dashboard restored to factory default.");
+        }
+      }
+
+      // History Rendering Loop
+      function renderRecentHistoryPanels() {
+        const invoices = getRecentInvoices();
+        const quotes = getRecentQuotes();
+
+        document.getElementById("invoice-count").textContent = `${invoices.length} Saved`;
+        document.getElementById("quote-count").textContent = `${quotes.length} Saved`;
+
+        const invoiceListNode = document.getElementById("recent-invoices-list");
+        if (invoices.length === 0) {
+          invoiceListNode.innerHTML = `
+            <div class="py-6 text-center text-slate-400 dark:text-slate-500 text-xs font-medium">
+              No draft invoices found. Click "Invoice Generator" above to build your first one!
+            </div>
+          `;
+        } else {
+          // Sort items descending by saving timestamp
+          invoices.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
+          invoiceListNode.innerHTML = invoices.map(inv => `
+            <div class="py-3 flex justify-between items-center text-xs group/item hover:bg-slate-50 dark:hover:bg-slate-900/60 px-2 rounded-xl transition-colors">
+              <div class="flex-grow min-w-0 pr-3">
+                <div class="flex items-center space-x-1.5">
+                  <span class="font-bold text-slate-800 dark:text-slate-200">INV-${inv.invoiceNum || inv.id}</span>
+                  <span class="text-[10px] text-slate-400 font-medium truncate max-w-[120px]">${inv.customerName || "No Client Name"}</span>
+                </div>
+                <div class="text-[10px] text-slate-400 flex items-center space-x-2 mt-0.5">${new Date(inv.timestamp || Date.now()).toLocaleDateString("en-GB", {day:'numeric', month:'short'})} • ${inv.itemsCount || 0} items</div>
+              </div>
+              <div class="flex items-center space-x-2 flex-shrink-0">
+                <span class="font-mono font-bold text-slate-800 dark:text-slate-200 text-xs">${formatCurrency(inv.grandTotal)}</span>
+                <a href="/invoice.html?id=${inv.id}" class="p-1 px-2.5 bg-amber-500/10 hover:bg-amber-500 text-amber-600 dark:text-amber-400 hover:text-slate-900 rounded-lg text-[10px] font-bold transition-all">Load</a>
+                <button onclick="deleteInvoiceDraft('${inv.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-red-500 transition-colors focus:outline-none" title="Delete">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </div>
+          `).join("");
+        }
+
+        const quoteListNode = document.getElementById("recent-quotes-list");
+        if (quotes.length === 0) {
+          quoteListNode.innerHTML = `
+            <div class="py-6 text-center text-slate-400 dark:text-slate-500 text-xs font-medium">
+              No draft quotes found. Click "Quote Generator" above to start pricing jobs!
+            </div>
+          `;
+        } else {
+          quotes.sort((a,b) => (b.timestamp || 0) - (a.timestamp || 0));
+          quoteListNode.innerHTML = quotes.map(qt => `
+            <div class="py-3 flex justify-between items-center text-xs group/item hover:bg-slate-50 dark:hover:bg-slate-900/60 px-2 rounded-xl transition-colors">
+              <div class="flex-grow min-w-0 pr-3">
+                <div class="flex items-center space-x-1.5">
+                  <span class="font-bold text-slate-800 dark:text-slate-200">QT-${qt.quoteNum || qt.id}</span>
+                  <span class="text-[10px] text-slate-400 font-medium truncate max-w-[120px]">${qt.customerName || "No Client Name"}</span>
+                </div>
+                <div class="text-[10px] text-slate-400 flex items-center space-x-2 mt-0.5">${new Date(qt.timestamp || Date.now()).toLocaleDateString("en-GB", {day:'numeric', month:'short'})} • Exp ${new Date(qt.expiryDate || Date.now()).toLocaleDateString("en-GB", {day:'numeric', month:'short'})}</div>
+              </div>
+              <div class="flex items-center space-x-2 flex-shrink-0">
+                <span class="font-mono font-bold text-slate-800 dark:text-slate-200 text-xs">${formatCurrency(qt.totalAmount)}</span>
+                <a href="/quote.html?id=${qt.id}" class="p-1 px-2.5 bg-indigo-500/10 hover:bg-indigo-500 text-indigo-600 dark:text-indigo-400 hover:text-slate-900 rounded-lg text-[10px] font-bold transition-all">Load</a>
+                <button onclick="deleteQuoteDraft('${qt.id}')" class="p-1.5 rounded-lg text-slate-400 hover:text-red-500 transition-colors focus:outline-none" title="Delete">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </div>
+          `).join("");
+        }
+      }
+
+      function deleteInvoiceDraft(id) {
+        if (confirm("Delete this draft invoice permanently?")) {
+          const invoices = getRecentInvoices().filter(inv => inv.id !== id);
+          saveRecentInvoices(invoices);
+          applySettingsToHomepage();
+        }
+      }
+
+      function deleteQuoteDraft(id) {
+        if (confirm("Delete this draft quote permanently?")) {
+          const quotes = getRecentQuotes().filter(qt => qt.id !== id);
+          saveRecentQuotes(quotes);
+          applySettingsToHomepage();
+        }
+      }
+
+      // Initial landing trigger
+      document.addEventListener("DOMContentLoaded", () => {
+        applySettingsToHomepage();
+        lucide.createIcons();
+      });
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

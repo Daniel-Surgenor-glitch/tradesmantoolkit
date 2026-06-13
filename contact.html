@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us & Feedback | Tradesman Toolkit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#f5f3ff',   /* indigo-50 */
+                100: '#ede9fe',  /* indigo-100 */
+                200: '#ddd6fe',  /* indigo-200 */
+                300: '#c4b5fd',  /* indigo-300 */
+                400: '#818cf8',  /* indigo-400 */
+                500: '#4f46e5',  /* indigo-600 */
+                600: '#4338ca',  /* indigo-700 */
+                700: '#3730a3',  /* indigo-800 */
+                800: '#1e1b4b',  /* indigo-900 */
+                900: '#1e1b4b',
+              },
+              amber: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#818cf8',
+                500: '#4f46e5',
+                600: '#4338ca',
+                700: '#3730a3',
+                800: '#1e1b4b',
+                900: '#1e1b4b',
+                950: '#0f0e26',
+              },
+              emerald: {
+                50: '#f5f3ff',
+                100: '#ede9fe',
+                200: '#ddd6fe',
+                300: '#c4b5fd',
+                400: '#818cf8',
+                500: '#4f46e5',
+                600: '#4338ca',
+                700: '#3730a3',
+                800: '#1e1b4b',
+                900: '#1e1b4b',
+                950: '#0f0e26',
+              },
+              slate: {
+                50: '#f8fafc',
+                150: '#e2e8f0',
+                200: '#e2e8f0',
+                700: '#334155',
+                800: '#1e293b',
+                900: '#0f172a',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
+
+    <!-- Top Info Bar -->
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800 flex justify-between items-center no-print">
+      <div class="flex items-center space-x-2">
+        <a href="/index.html" class="hover:text-amber-400 flex items-center space-x-1 font-semibold">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" x2="5" y1="12" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>Back to Dashboard</span>
+        </a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span>TLS Encrypted Feedback Form</span>
+        <button onclick="toggleDarkMode()" class="hover:text-amber-500 theme-toggle">
+          <svg class="theme-icon w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 shadow-sm sticky top-0 z-45 no-print">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16">
+          <div class="flex items-center">
+            <a href="/index.html" class="flex items-center space-x-1">
+              <span class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">Tradesman<span class="text-amber-500">Toolkit</span></span>
+            </a>
+          </div>
+
+          <nav class="hidden md:flex space-x-1 items-center">
+            <a href="/index.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500">Home</a>
+            <a href="/invoice.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500">Invoice Generator</a>
+            <a href="/quote.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 font-sans">Quote Generator</a>
+            <a href="/calculator.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500 font-sans">Material Calculator</a>
+            <a href="/about.html" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-amber-500">About</a>
+            <a href="/contact.html" class="px-3 py-2 rounded-md text-sm font-semibold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/40">Contact</a>
+          </nav>
+
+          <div class="flex items-center space-x-2">
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-nav-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-3 space-y-1">
+        <a href="/index.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Home</a>
+        <a href="/invoice.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Invoice Generator</a>
+        <a href="/quote.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Quote Generator</a>
+        <a href="/calculator.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">Material Calculator</a>
+        <a href="/about.html" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-100">About</a>
+        <a href="/contact.html" class="block px-3 py-2 rounded-md text-base font-semibold text-amber-600 bg-amber-50 dark:bg-amber-950/40 font-semibold">Contact</a>
+      </div>
+    </header>
+
+    <!-- Ad Placement 1: Top Banner Ad -->
+    <div class="max-w-7xl mx-auto w-full px-4 mt-4 no-print text-center">
+      <!-- GOOGLE ADSENSE CODE INTEGRATION POINT -->
+      <div class="adsense-placement w-full h-18 flex flex-col justify-center items-center rounded-lg py-1 px-4 shadow-inner">
+        <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold mb-0.5 animate-pulse">Google AdSense Banner (Header Layout)</span>
+        <span class="text-[9px] text-slate-400 dark:text-slate-650">Auto-responsive top banner - ideal sizing (728x90)</span>
+      </div>
+    </div>
+
+    <!-- Main Workspace Container -->
+    <main class="flex-grow max-w-7xl mx-auto w-full px-4 py-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- ==================== LEFT FEEDBACK FORM (7 cols) ==================== -->
+        <div class="lg:col-span-7 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+          <h1 class="text-2xl font-black tracking-tight text-slate-900 dark:text-white flex items-center space-x-2.5">
+            <span class="inline-block w-1.5 h-6 bg-amber-500 rounded-full"></span>
+            <span>Get In Touch / Submit Feedback</span>
+          </h1>
+          <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm">
+            Have a suggestion for a calculator formula? Want to report a styling issue? Drop us a line. Since this is 100% static, files run local, but you can see your simulated mailbox submissions record below!
+          </p>
+
+          <!-- Contact input forms -->
+          <form id="contact-form" onsubmit="handleFormSubmission(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5">Your Name</label>
+                <input type="text" id="contact-name" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Arthur Pendelton" />
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5">Email Address</label>
+                <input type="email" id="contact-email" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="arthur@pendelton.co.uk" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5">Topic / Calculator Request</label>
+              <input type="text" id="contact-subject" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="e.g. Requesting a rendering brick layer calculator" />
+            </div>
+
+            <div>
+              <label class="block text-[10px] font-bold text-slate-400 uppercase mb-1.5">Message Content</label>
+              <textarea id="contact-message" required rows="4" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-amber-500" placeholder="Hi team, I love the plaster boards estimator and invoices builder, but could you please add..."></textarea>
+            </div>
+
+            <div class="pt-2 flex justify-between items-center flex-wrap gap-2">
+              <span class="text-[10px] text-slate-405 text-slate-400 bg-slate-50 dark:bg-slate-950/20 py-1.5 px-3 rounded-lg border border-slate-100 dark:border-slate-900">🔒 Dynamic TLS static encryption protection</span>
+              <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold px-5 py-2.5 rounded-xl text-xs transition-all flex items-center space-x-1.5 shadow">
+                <span>Send Feedback</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" x2="11" y1="2" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </form>
+
+          <!-- Success Alert -->
+          <div id="submit-alert" class="hidden bg-emerald-100 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-400 text-xs p-4 rounded-xl border border-emerald-200/50 flex items-start space-x-2.5 animate-fade-in">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="mt-0.5 text-emerald-600"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+            <div>
+              <strong class="font-bold block">Transmission Simulation Successful!</strong>
+              <span class="text-[11px] block mt-0.5 leading-normal">Your feedback message has been compiled successfully as client JSON and added to your Local mailbox simulation log down below!</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==================== RIGHT STATIC CONNECTOR INFO (5 cols) ==================== -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Static form instruction board -->
+          <div class="bg-slate-900 text-white rounded-3xl p-6 shadow-sm space-y-4 border border-slate-800">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-amber-400 block font-sans">Connecting Static Forms directly</h3>
+            <h2 class="text-sm font-bold tracking-tight">How to collect real emails on static pages?</h2>
+            <p class="text-xs text-slate-300 leading-normal">
+              Because this project is configured to run fully client-side on <b>GitHub Pages</b> without specialized Node servers, HTML form tags cannot submit naturally to backend databases.
+            </p>
+            <p class="text-xs text-slate-350 text-slate-400 leading-normal">
+              To wire this form up to your actual email inbox without writing a single line of backend PHP code:
+            </p>
+
+            <div class="bg-slate-950 p-4 rounded-xl font-mono text-[10px] text-slate-300 border border-slate-800 space-y-2">
+              <span class="text-amber-500 block font-bold">// Simply replace the &lt;form&gt; tag with:</span>
+              <div class="overflow-x-auto whitespace-nowrap text-slate-300">
+                &lt;form action="<b class="text-white bg-slate-900 px-1 rounded font-semibold">https://formspree.io/f/YOUR_ID</b>" method="POST"&gt;
+              </div>
+              <span class="text-slate-400 block pt-1 leading-normal">Formspree, Web3Forms, or Netlify Forms will capture the name and messages directly and ping your mobile email instantly!</span>
+            </div>
+          </div>
+
+          <!-- Submitted Local mail history log -->
+          <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl shadow-sm space-y-4">
+            <div class="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-2.5">
+              <span class="text-xs font-bold uppercase text-slate-400">Local Mail Outbox Log</span>
+              <button onclick="clearLocalMailbox()" class="text-[10px] text-red-500 font-bold hover:text-red-650">Clear Log</button>
+            </div>
+            <div id="mailbox-list" class="space-y-3 dark:divide-slate-700/35 divide-y divide-slate-100 max-h-60 overflow-y-auto pr-1">
+              <!-- Dynamically rendered local mailbox entries -->
+              <span class="text-xs text-slate-400 block text-center py-4">No logged entries. Send feedback above to simulate.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer Banner Ad Placement -->
+    <div class="max-w-7xl mx-auto w-full px-4 mb-6 no-print text-center">
+      <!-- GOOGLE ADSENSE CODE INTEGRATION POINT -->
+      <div class="adsense-placement w-full h-20 flex flex-col justify-center items-center rounded-lg shadow-inner">
+        <span class="text-[10px] font-mono tracking-wider uppercase text-slate-400 dark:text-slate-500 font-semibold">Google AdSense Banner (Footer Layout)</span>
+        <span class="text-[9px] text-slate-400 dark:text-slate-650 font-medium">Auto-responsive footer banner</span>
+      </div>
+    </div>
+
+    <!-- Main Footer links -->
+    <footer class="bg-slate-900 text-slate-400 py-6 px-4 border-t border-slate-800 text-center text-xs space-y-2 no-print">
+      <p>© 2026 Tradesman Toolkit. Static feedback panel for builders and contractors.</p>
+      <div class="flex justify-center space-x-3 text-[10px] font-medium text-slate-500">
+        <a href="/index.html" class="hover:text-amber-500 transition-colors font-semibold">Dashboard Home</a>
+        <span>•</span>
+        <a href="/invoice.html" class="hover:text-amber-500 transition-colors">Invoice Builder</a>
+        <span>•</span>
+        <a href="/quote.html" class="hover:text-amber-500 transition-colors">Quote Generator</a>
+        <span>•</span>
+        <a href="/calculator.html" class="hover:text-amber-500 transition-colors">Plaster Estimates</a>
+      </div>
+    </footer>
+
+    <!-- Scripts Integration -->
+    <script src="/js/main.js"></script>
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-nav-menu");
+        menu.classList.toggle("hidden");
+      }
+
+      const MAIL_STORAGE_KEY = "tradesman_simulated_mail";
+
+      function getLocalMail() {
+        const data = localStorage.getItem(MAIL_STORAGE_KEY);
+        return data ? JSON.parse(data) : [];
+      }
+
+      function renderLocalMail() {
+        const list = getLocalMail();
+        const container = document.getElementById("mailbox-list");
+        
+        if (list.length === 0) {
+          container.innerHTML = `<span class="text-xs text-slate-400 block text-center py-4">No logged entries. Send feedback above to simulate.</span>`;
+          return;
+        }
+
+        container.innerHTML = list.map((m, idx) => `
+          <div class="pt-3 pb-1 text-xs space-y-1 animate-fade-in">
+            <div class="flex justify-between items-baseline font-semibold leading-none">
+              <span class="text-slate-800 dark:text-slate-200 font-black">${m.name}</span>
+              <span class="text-[9px] font-mono font-medium text-slate-400">${new Date(m.time).toLocaleTimeString()}</span>
+            </div>
+            <div class="text-[10px] text-slate-400 font-medium font-sans"><b>Topic:</b> ${m.subject}</div>
+            <p class="text-slate-500 dark:text-slate-400 leading-relaxed font-sans text-[11px] whitespace-pre-wrap pt-0.5">${m.message}</p>
+            <div class="text-[9px] text-slate-400 italic font-mono pt-1">Return Email: ${m.email}</div>
+          </div>
+        `).reverse().join("");
+      }
+
+      function handleFormSubmission(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById("contact-name").value;
+        const email = document.getElementById("contact-email").value;
+        const subject = document.getElementById("contact-subject").value;
+        const message = document.getElementById("contact-message").value;
+
+        // Push to local mail lists
+        const list = getLocalMail();
+        list.push({ name, email, subject, message, time: Date.now() });
+        localStorage.setItem(MAIL_STORAGE_KEY, JSON.stringify(list));
+
+        // UI alerts
+        document.getElementById("submit-alert").classList.remove("hidden");
+        document.getElementById("contact-form").reset();
+        
+        renderLocalMail();
+
+        // Hide success alert after 8 seconds
+        setTimeout(() => {
+          const banner = document.getElementById("submit-alert");
+          if(banner) banner.classList.add("hidden");
+        }, 8000);
+      }
+
+      function clearLocalMailbox() {
+        if (confirm("Permanently wipe your simulated feedback mailbox logs?")) {
+          localStorage.removeItem(MAIL_STORAGE_KEY);
+          renderLocalMail();
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderLocalMail();
+      });
+    </script>
+  </body>
+</html>
